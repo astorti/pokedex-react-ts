@@ -19,11 +19,10 @@ export const PokemonListPage = () => {
                 <Search />
                 <button onClick={returnToStartPage}
                     style={{
-                        backgroundColor: 'gray',
-                        color: 'white',
+                        color: 'yellow',
                         padding: '2px 10px',
-                        borderWidth: '1px',
-                        borderColor: 'white',
+                        borderWidth: '2px',
+                        borderColor: 'yellow',
                         borderRadius: '3px',
                         cursor: 'pointer'
                     }}>Back</button>

@@ -11,7 +11,9 @@ const contextProvider: PokemonContext = {
     pokemonsDatas: [],
     getPokemonsByName: () => { },
     selectedPokemon: [],
-    getSelectedItem: () => {},
+    getSelectedItem: () => { },
+    pokemonDetail: {},
+    getDetailedPokemon() {},
 }
 
 export const Context = createContext<PokemonContext>(
@@ -26,6 +28,7 @@ export const PokemonProvider: FC<{children: ReactNode}> = ({ children }) => {
     const [pokesNames, setPokesNames] = useState([])
     const [pokemonsDatas, setPokemonsDatas] = useState<any | undefined>([])
     const [selectedPokemon, setSelectedPokemons] = useState<any | undefined>([])
+    const [pokemonDetail, setPokemonDetail] = useState<number | undefined>()
 
     const getPokemonApi = async () => {
         try {
@@ -38,7 +41,6 @@ export const PokemonProvider: FC<{children: ReactNode}> = ({ children }) => {
                 )
             }))
             getPokemonsByName()
-            console.log(pokemonsDatas.length, selectedPokemon.length)
         } catch (error) {
             console.log("Falha ao conectar com api", error)
         }
@@ -76,9 +78,27 @@ export const PokemonProvider: FC<{children: ReactNode}> = ({ children }) => {
         navigate('/list')
     }
 
+    const getDetailedPokemon = (id: number) => {
+        for (let i in pokemonsDatas) {
+            if (id === pokemonsDatas[i].id) {
+                setPokemonDetail(pokemonsDatas[i])
+            }
+        }
+    }
+
     return (
         <Context.Provider
-            value={{pokemons, getPokemonApi, pokesNames, getPokemonsByName, pokemonsDatas, selectedPokemon, getSelectedItem}}
+            value={{
+                pokemons,
+                getPokemonApi,
+                pokesNames,
+                getPokemonsByName,
+                pokemonsDatas,
+                selectedPokemon,
+                getSelectedItem,
+                pokemonDetail,
+                getDetailedPokemon
+            }}
         >
             {children}
         </Context.Provider>

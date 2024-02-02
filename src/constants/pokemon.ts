@@ -1,1 +1,1 @@
-export const URL_POKE_API = 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
+export const URL_POKE_API = 'https://pokeapi.co/api/v2/pokemon?limit=210&offset=0'

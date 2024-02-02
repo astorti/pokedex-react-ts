@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/pokemonProvider";
 import { Card, CardTwo, Container, Main, Name, NumberId, PokemonImage } from "./styled";
-import './style.css'
+import { useNavigate } from "react-router-dom";
+import '../../pokemonColorType.css'
 
 export const PokemonCard = () => {
 
-    const { getPokemonApi, selectedPokemon } = useContext(Context)
+    const navigate = useNavigate()
+
+    const { getPokemonApi, selectedPokemon, getDetailedPokemon } = useContext(Context)
     const [pokemonList, setPokemonList] = useState<any>([])
 
     useEffect(() => {
@@ -18,6 +21,12 @@ export const PokemonCard = () => {
         return newName
     }
 
+
+    const goToPokemonDetailPage = (id: number) => {
+        getDetailedPokemon(id)
+        navigate("/detail")
+    }
+
     return (
         <Main>
             {pokemonList.length === 0
@@ -26,7 +35,7 @@ export const PokemonCard = () => {
                     let type = pokemon.types[0].type.name
                     let image:any = pokemon.sprites.other.dream_world.front_default
                     return (
-                        <Container className={type}>
+                        <Container onClick={() => goToPokemonDetailPage(pokemon.id)} className={type}>
                             <Card className={type}>
                                 <NumberId className={type}>
                                     <p className={type}>{ pokemon.id }</p>

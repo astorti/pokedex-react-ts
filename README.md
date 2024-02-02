@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# POKEDEX
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto pessoal de um Pokedex. O projeto contem três páginas, a página inicial de boas vindas, a página de listagem dos pokemons e a página de detalhes de um pokemon específico.
 
-## Available Scripts
+Nas páginas de boas vindas e de listagem dos pokemons, é  possível realizar uma busca pelo nome e pelo tipo do pokemon ou deixar a busca vazia para carregar todos os pokemons da api. Caso seja digitado um nome inválido ou apresente alguma falha no carregamento dos pokemons, uma mensagem de erro é exibida e solitado para realizar nova busca. 
 
-In the project directory, you can run:
+## Tecnologias utilizada para criação do projeto
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 
-### `npm start`
+## Telas do Pokedex
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![startPage](src/assets/startPage.png)
+Figura1: Página inicial.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![listPage](src/assets/listPage.png)
+Figura2: Página de listagem dos pokemons.
 
-### `npm test`
+![pokemonCard](src/assets/pokemonCard.png)
+Figura3: Card do pokemon em destaque.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![detailPage](src/assets/detailPage.png)
+Figura4: Página de detalhes do pokemon selecionado.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+>*Projeto desenvolvido em fevereiro/2024*

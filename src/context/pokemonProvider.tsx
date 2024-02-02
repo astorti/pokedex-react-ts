@@ -2,13 +2,16 @@ import { createContext, useState, FC, ReactNode } from "react"
 import { PokemonContext } from "../types/pokemon"
 import { api } from "../services/api"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const contextProvider: PokemonContext = {
     pokemons: [],
     getPokemonApi: () => { },
     pokesNames: [],
     pokemonsDatas: [],
-    getPokemonsByName: () => {}
+    getPokemonsByName: () => { },
+    selectedPokemon: [],
+    getSelectedItem: () => {},
 }
 
 export const Context = createContext<PokemonContext>(
@@ -17,9 +20,12 @@ export const Context = createContext<PokemonContext>(
 
 export const PokemonProvider: FC<{children: ReactNode}> = ({ children }) => {
     
+    const navigate = useNavigate()
+
     const [pokemons, setPokemons] = useState<any[]>([])
     const [pokesNames, setPokesNames] = useState([])
     const [pokemonsDatas, setPokemonsDatas] = useState<any | undefined>([])
+    const [selectedPokemon, setSelectedPokemons] = useState<any | undefined>([])
 
     const getPokemonApi = async () => {
         try {
@@ -32,9 +38,11 @@ export const PokemonProvider: FC<{children: ReactNode}> = ({ children }) => {
                 )
             }))
             getPokemonsByName()
+            console.log(pokemonsDatas.length, selectedPokemon.length)
         } catch (error) {
             console.log("Falha ao conectar com api", error)
         }
+        
     }
 
     const getPokemonsByName = async () => {
@@ -52,9 +60,25 @@ export const PokemonProvider: FC<{children: ReactNode}> = ({ children }) => {
         }
     }
 
+    const getSelectedItem = (search: string) => {
+        getPokemonApi()
+        let newList: any = []
+        if (search !== '' ){
+            for (let i in pokemonsDatas) {
+                if (search === pokemonsDatas[i].name || search === pokemonsDatas[i].types[0].type.name) {
+                    newList.push(pokemonsDatas[i])
+                }    
+            }
+            setSelectedPokemons(newList)
+        } else {
+            setSelectedPokemons(pokemonsDatas)
+        }        
+        navigate('/list')
+    }
+
     return (
         <Context.Provider
-            value={{pokemons, getPokemonApi, pokesNames, getPokemonsByName, pokemonsDatas}}
+            value={{pokemons, getPokemonApi, pokesNames, getPokemonsByName, pokemonsDatas, selectedPokemon, getSelectedItem}}
         >
             {children}
         </Context.Provider>
